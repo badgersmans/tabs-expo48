@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
@@ -6,9 +6,13 @@ import { Text, View } from '../../components/Themed';
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <FlatList 
+        data={Array(12)}
+        renderItem={() => <View style={styles.box}/>}
+        numColumns={3}
+        contentContainerStyle={{ gap: 10 }}
+        columnWrapperStyle={{ gap: 10 }}
+      />
     </View>
   );
 }
@@ -16,16 +20,22 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    // flexDirection: 'row',
+    // flexWrap: 'wrap',
+    // gap: 20,
+    // rowGap: 30,
+    // columnGap: 30
+    
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  box: {
+    width: 150,
+    height: 150,
+    flex: 1,
+    aspectRatio: 1,
+
+    backgroundColor: 'lightgreen',
+    borderColor: 'red',
+    borderWidth: 5,
+   
   },
 });

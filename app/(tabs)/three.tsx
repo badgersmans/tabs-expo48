@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, FlatList } from 'react-native';
+import { Pressable, StyleSheet, FlatList, Image as RNImage } from 'react-native';
 
 import { Text, View } from '../../components/Themed';
 import { Image } from 'expo-image';
@@ -8,22 +8,23 @@ import { FlashList } from "@shopify/flash-list";
 const blurhash =
   '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
 
-export default function TabTwoScreen() {
+export default function three() {
 
   const [seed, setSeed] = useState(696);
 
   return (
     <View style={styles.container}>
-      
       <FlatList
         data={Array(100)}
         renderItem={({ index }) => (
-          <Image
+          <RNImage
             style={styles.image}
-            source={`https://picsum.photos/seed/${index}/3000/2000`}
-            placeholder={blurhash}
-            contentFit="cover"
-            transition={500}
+            // source={`https://picsum.photos/seed/${index}/3000/2000`}
+            source={{uri: `https://picsum.photos/seed/${index}/3000/2000`}}
+            // placeholder={blurhash}
+            // contentFit="cover"
+            // transition={500}
+            resizeMode='cover'
           />
         )}
         // estimatedItemSize={150}
@@ -31,8 +32,6 @@ export default function TabTwoScreen() {
         contentContainerStyle={{ gap: 10 }}
         columnWrapperStyle={{ gap: 10 }}
       />
-
-      
     </View>
   );
 }
